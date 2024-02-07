@@ -41,7 +41,7 @@ api_endpoint_multi_mask_lite="https://ay.us-east-1.modelbit.com/v1/apply_segment
 api_endpoint_multi_mask_quant="https://ay.us-east-1.modelbit.com/v1/apply_segmentation_and_blend_fast_multiple_boxes/latest"
 
 st.set_page_config(layout='wide')
-set_background('gui/bg.png')
+set_background('bg.png')
 
 
 css_text = """
