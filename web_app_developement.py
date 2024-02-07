@@ -10,18 +10,15 @@ import time
 from PIL import Image, ImageDraw
 import io
 
+def set_background():
+    # GitHub raw content URL of the background image
+    bg_image_url = "https://github.com/aliyassine1/streamlit_LiteMedSAM_quantized/blob/6c86d9a4a6e988dc6d832d6fab1ff6f3d80168a5/bg.png"
 
-#make a background related to MedSAM
-def set_background(image_file):
-    with open(image_file, "rb") as f:
-        img_data = f.read()
-    b64_encoded = base64.b64encode(img_data).decode()
-
-    # Create a style tag for the background image and a text box with a semi-transparent background
+    # Use the URL in the style tag
     style = f"""
         <style>
         .stApp {{
-            background-image: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)), url(data:image/png;base64,{b64_encoded});
+            background-image: linear-gradient(rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.45)), url('{bg_image_url}');
             background-size: cover;
         }}
         .textbox {{
@@ -33,6 +30,7 @@ def set_background(image_file):
     """
     st.markdown(style, unsafe_allow_html=True)
 
+
 # Set API endpoints
 api_endpoint_lite = "https://ay.us-east-1.modelbit.com/v1/apply_segmentation_and_blend/latest"
 api_endpoint_quant = "https://ay.us-east-1.modelbit.com/v1/apply_segmentation_and_blend_fast/latest"
@@ -41,7 +39,7 @@ api_endpoint_multi_mask_lite="https://ay.us-east-1.modelbit.com/v1/apply_segment
 api_endpoint_multi_mask_quant="https://ay.us-east-1.modelbit.com/v1/apply_segmentation_and_blend_fast_multiple_boxes/latest"
 
 st.set_page_config(layout='wide')
-set_background('./bg.png')
+set_background()
 
 
 css_text = """
